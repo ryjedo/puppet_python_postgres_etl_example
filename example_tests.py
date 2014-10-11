@@ -2,15 +2,7 @@
 
 import unittest
 
-#from example import ExampleClass
 from example import FacterPoller
-
-'''
-class ExampleTests(unittest.TestCase):
-
-	def test_first(self):
-		self.assertTrue(ExampleClass().return_true())
-'''
 
 class HarvestFacterDataTests(unittest.TestCase):
 
@@ -28,8 +20,6 @@ class SplitFacterDataIntoListTests(unittest.TestCase):
 
 	def test_not_null(self):
 		self.assertNotEqual(self.__facter_data_list, None)
-#		self.assertNotEqual(self.__facter_data_list[0], None)
-#		self.assertNotEqual(self.__facter_data_list[-1], None)
 
 	def test_is_a_list(self):
 		self.assertIsInstance(self.__facter_data_list, list)

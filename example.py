@@ -2,13 +2,6 @@
 
 import subprocess
 
-'''
-class ExampleClass:
-
-	def return_true(self):
-		return True
-'''
-
 class FacterPoller:
 
 	def harvest_facter_data(self):
@@ -18,7 +11,5 @@ class FacterPoller:
 
 	def get_facter_data_list(self):
 
-		#_facter_data_list = self.harvest_facter_data().split('\n')
+		#this works and removes empty lines, but i googled the solution and cannot yet follow the logic.
 		return [line for line in self.harvest_facter_data().split('\n') if line.strip() != '']
-
-		#return _facter_data_list
