@@ -1,6 +1,7 @@
 #!/usr/bin/python
 
 import subprocess
+import psycopg2
 
 class FacterPoller:
 
@@ -23,3 +24,19 @@ class FacterPoller:
 			_facter_data_dictionary[_key] = _value
 
 		return _facter_data_dictionary
+
+class SqlInteraction:
+
+	def add_uptime_seconds(self):
+		_conn = psycopg2.connect("dbname=facterstore user=ryan")
+		_cursor = _conn.cursor()
+		_facter_data_dictionary = FacterPoller().get_facter_data_dictionary()
+
+		_cursor.execute("INSERT INTO facterstats VALUES (%s)", [_facter_data_dictionary['uptime_seconds']])
+		_conn.commit()
+
+		_cursor.close()
+		_conn.close()
+
+if __name__ == "__main__":
+	SqlInteraction().add_uptime_seconds()
