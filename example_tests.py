@@ -3,7 +3,6 @@
 import unittest
 
 from example import FacterPoller
-from example import SqlInterface
 
 class HarvestFacterDataTests(unittest.TestCase):
 
@@ -54,26 +53,6 @@ class ConvertListIntoDictionaryTests(unittest.TestCase):
 		self.assertNotEqual(self.__facter_data_dictionary['virtual'], None)
 		self.assertNotEqual(self.__facter_data_dictionary['puppetversion'], "")
 		self.assertNotEqual(self.__facter_data_dictionary['puppetversion'], None)
-
-class DatabaseConnectionTests(unittest.TestCase):
-
-	__sql_interface = SqlInterface().create_database_connection()
-
-	def test_not_null(self):
-		self.assertNotEqual(self.__sql_interface, None)
-
-		#blatent misuse of a unit test to inject data into a db.
-	def test_db_insertion(self):
-		SqlInterface.add_uptime_to_db()
-
-
-
-
-
-
-
-
-
 
 if __name__ == '__main__':
     unittest.main()
