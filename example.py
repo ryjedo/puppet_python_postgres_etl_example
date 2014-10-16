@@ -32,7 +32,7 @@ class SqlInteraction:
 		_cursor = _conn.cursor()
 		_facter_data_dictionary = FacterPoller().get_facter_data_dictionary()
 
-		_cursor.execute("INSERT INTO facterstats VALUES (%s)", [_facter_data_dictionary['uptime_seconds']])
+		_cursor.execute("INSERT INTO facterstats VALUES (%s, %s)", [_facter_data_dictionary['uptime_seconds'], _facter_data_dictionary['memoryfree_mb']])
 		_conn.commit()
 
 		_cursor.close()
